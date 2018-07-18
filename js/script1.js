@@ -20,7 +20,7 @@ $(document).ready(()=> {
   var finder = $("<div class='find'><span/></div>");
   finder.hide();
   $("h1").before(finder);
-  for (let i = 0; i < 7;i++) {
+  for (let i = 6; i >= 0;i--) {
     $('span').first().after(links[i]);
   }
   $('span').first().remove()

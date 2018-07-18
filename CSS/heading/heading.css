@@ -10,6 +10,7 @@
   text-align: center;
   line-height: 75px;
   font-size: 30px;
+  overflow:   hidden;
 }
 .container {
   position:sticky;
@@ -20,8 +21,7 @@
 }
 .text {
   position: relative;
-  left: 50%;
-  top: -50%;
+  text-align: center;
 }
 .rotate {
   position: relative;
