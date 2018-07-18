@@ -1,13 +1,23 @@
 const express = require('express');
 const app = express();
 const path = require('path')
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 
+function beautify() {
+  const { document } = (new JSDOM(`/static/Report_standings.html`)).window;
+  console.log(document.location)
+
+}
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/static/Report_standings.html'));
+    beautify();
 });
 
 app.get('/standings', (req, res) => {
     res.sendFile(path.join(__dirname + '/static/Report_standings.html'));
+    beautify();
+
 });
 
 app.get('/games', (req, res) => {
