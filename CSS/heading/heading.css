@@ -4,30 +4,40 @@
   flex-wrap: nowrap;
 }
 .find > a {
+  transition: background-color 0.5s ease;
   background-color: #f1f1f1;
   width: 14%;
   margin: 10px;
   text-align: center;
   line-height: 75px;
-  font-size: 30px;
+  font-size: 12px;
   overflow:   hidden;
+  text-decoration: none;
+  color: black;
+}
+.find > a:hover {
+  transition: background-color 0.5s ease;
+  background-color: white;
+}
+.find > a:visited {
+  text-decoration: none;
 }
 .container {
-  position:sticky;
-  height: 40px;
+  position:sticky !important;
+  height: 20px;
   padding: 20px;
   background-color: grey;
 
 }
 .text {
-  position: relative;
-  text-align: center;
+  position: relative !important;
+  text-align: center !important;
 }
 .rotate {
-  position: relative;
-  text-indent: 90;
-  height: 100%;
-  width: auto;
+  position: relative !important;
+  text-indent: 90 !important;
+  height: 100% !important;
+  width: auto !important;
 
 }
 .rotated {

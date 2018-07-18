@@ -26,7 +26,7 @@ $(document).ready(()=> {
 
   var rotation = false;
   $('img').first().click(function() {
-      var start = rotation ? 90 : 0;
+      var start = rotation ? 90 : -90;
       rotation = rotation ? false : true;
       $(this).animate({  textIndent: start }, {
       step: function(now,fx) {
