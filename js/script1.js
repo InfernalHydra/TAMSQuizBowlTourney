@@ -7,7 +7,6 @@ $(document).ready(()=> {
   for (let i = 0; i < 7; i++) {
     links[i] = currentChild.children();
     currentChild = currentChild.next()
-    console.log (links[i].html())
   }
   heading.remove();
 
