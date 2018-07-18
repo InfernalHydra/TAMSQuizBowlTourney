@@ -33,6 +33,9 @@ async.parallel([
 
 ]);
 =======
+app.use(express.static("js"))
+app.use(express.static("pictures"))
+app.use(express.static("CSS"))
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/static/Report_standings.html'));
