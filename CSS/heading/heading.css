@@ -1,0 +1,39 @@
+/**/
+.find {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.find > a {
+  background-color: #f1f1f1;
+  width: 14%;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+.container {
+  position:sticky;
+  height: 40px;
+  padding: 20px;
+  background-color: grey;
+
+}
+.text {
+  position: relative;
+  left: 50%;
+  top: -50%;
+}
+.rotate {
+  position: relative;
+  text-indent: 90;
+  height: 100%;
+  width: auto;
+
+}
+.rotated {
+  -webkit-transform: rotate(90deg);  /* Chrome, Safari 3.1+ */
+  -moz-transform: rotate(90deg);  /* Firefox 3.5-15 */
+  -ms-transform: rotate(90deg);  /* IE 9 */
+  -o-transform: rotate(90deg);  /* Opera 10.50-12.00 */
+  transform: rotate(490deg);  /* Firefox 16+, IE 10+, Opera 12.10+ */
+}
