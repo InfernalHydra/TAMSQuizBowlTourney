@@ -19,7 +19,6 @@
   "homepage": "https://github.com/InfernalHydra/TAMSQuizBowlTourney#readme",
   "dependencies": {
     "express": "^4.16.3",
-    "jsdom": "^11.11.0",
     "nodemon": "^1.18.3"
   }
 }
