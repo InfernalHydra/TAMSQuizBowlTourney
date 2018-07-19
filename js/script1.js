@@ -68,7 +68,7 @@ $(document).ready(()=> {
         current = current == -1 ? 1 : -1;
         var comparison = {};
         for (let i = 0; i < sValues.length;i++) {
-          comparison[i]=sValues[i][index-1]
+          comparison[i]=sValues[i][index]
         }
         var sorted = Object.keys(comparison).sort(function(a,b){
           if (comparison[a] == comparison[b]) {
@@ -102,9 +102,12 @@ $(document).ready(()=> {
           if ($(this).has("a").length==0) {
             entries.push($(this).html());
           }
+          else {
+            entries.push($(this).text());
+          }
         })
         sValues.push(entries);
-        //console.log(entries);
+        console.log(entries);
     })
   })
   var endq = $("<div class='title'>Click on the tags to sort</div>");
