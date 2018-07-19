@@ -18,14 +18,14 @@ $(document).ready(()=> {
   $(".text").before(node);
 
   var finder = $("<div class='find'><span/></div>");
-  finder.hide();
+  //finder.hide();
   $("h1").before(finder);
   for (let i = 6; i >= 0;i--) {
     $('span').first().after(links[i]);
   }
   $('span').first().remove()
 
-  var rotation = false;
+  var rotation = true;
   $('img').first().click(function() {
       var start = rotation ? 90 : -90;
       rotation = rotation ? false : true;
@@ -48,22 +48,29 @@ $(document).ready(()=> {
   "BHrd":"Total bonus","BPts":"Points for bonus","P/B":"avg score for bonus"}
   var sorting = []
   var sValues = []
+  var tags = []
   var pos = 0
   var current = -1
   $('table').each(function (index) {
     $(this).attr("class", "highlight");
     sorting.push([]);
     pos = index;
+    $(this).find('tr').attr("class","tbh");
     $(this).find('tr').first().children().each(function(index) {
       //console.log(index);
       $(this).attr("class","tooltip");
       let text = $(this).find("b").html()
+      tags.push(text);
       if (text in obj) {
         node = $('<span class="tooltiptext">' + obj[text] + '</span>');
         $(this).find("b").first().after(node)
       }
+
       $(this).click(() => {
         if(url.indexOf('http://' + host + '/teamdetail') != -1) {
+          return;
+        }
+        if(url.indexOf('http://' + host + '/playerdetail') != -1) {
           return;
         }
         current = current == -1 ? 1 : -1;
@@ -97,22 +104,51 @@ $(document).ready(()=> {
 
     $(this).find('tr').first().nextAll().each(function (index) {
 
-        sorting[pos].push($(this).clone());
         //console.log ($(this).html());
         var entries=[]
-        $(this).children().each(function() {
+        $(this).children().each(function(index) {
+
           if ($(this).has("a").length==0) {
             entries.push($(this).html());
           }
           else {
+            $(this).find("a").attr("class", "link");
             entries.push($(this).text());
           }
+          if (index == 0 && tags[0] == 'Rank'){
+            switch ($(this).text()) {
+              case "1":
+                $(this).html('<img class="medal" src="./PNG/gold.png"/>');
+                break;
+              case "2":
+                $(this).html('<img class="medal"src="./PNG/silver.png"/>');
+                break;
+              case "3":
+                $(this).html('<img class="medal"src="./PNG/bronze.png"/>');
+                break;
+              default:
+                $(this).attr("class", "rank");
+                break;
+            }
+            $(this).attr("align", "center");
+          }
+
         })
+        sorting[pos].push($(this).clone());
         sValues.push(entries);
         //console.log(entries);
     })
   })
-  var endq = $("<div class='title'>Click on the tags to sort</div>");
+  var endq=null
+  if(url.indexOf('http://' + host + '/teamdetail') != -1) {
+    endq = $("<div class='title'>The tags here a bit buggy so sorting has been disabled</div>");;
+  }
+  if(url.indexOf('http://' + host + '/playerdetail') != -1) {
+    endq = $("<div class='title'>The tags here a bit buggy so sorting has been disabled</div>");;
+  }
+  else {
+    endq = $("<div class='title'>Click on the tags to sort</div>");
+  }
   var endq2 = $("<div class='title'>Made by Daniel Hahn, Aditya Paul, and Ryan Chhong</div>");
   $("body").children().last().after(endq);
   $("body").children().last().after(endq2);

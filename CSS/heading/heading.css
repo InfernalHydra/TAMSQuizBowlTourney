@@ -18,18 +18,23 @@
   width: 14%;
   margin: 10px;
   text-align: center;
-  line-height: 75px;
+  line-height: 40px;
   font-size: 12px;
   overflow:   hidden;
   text-decoration: none;
   color: black;
+  opacity: 2 !important;
+}
+.find > a:link {
+  color: black;
+}
+.find > a:visited {
+  color: black;
+  text-decoration: none;
 }
 .find > a:hover {
   transition: background-color 0.5s ease;
   background-color: white;
-}
-.find > a:visited {
-  text-decoration: none;
 }
 .container {
   position: sticky !important;
@@ -62,23 +67,24 @@
 }
 
 .tooltip {
-    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+    position: relative;
+    border-bottom: 5px solid black; /* If you want dots under the hoverable text */
 }
 
 /* Tooltip text */
 .tooltip .tooltiptext {
     position: absolute !important;
-    bottom: 10%;
-    left: 50%;
-    margin-left: -60px;
     visibility: hidden;
-    width: 120px;
     background-color: black;
     color: #fff;
     text-align: center;
-    padding: 5px 0;
+    padding: 5px;
     border-radius: 6px;
-
+    margin: auto;
+    width: 80px;
+    top: 100%;
+    left: 50%;
+    margin-left: -40px;
     /* Position the tooltip text - see examples below! */
     z-index: 1;
 }
@@ -88,4 +94,50 @@
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
     visibility: visible;
+}
+
+.medal{
+  height:30px;
+  width: 30px;
+}
+.rank {
+  height:30px;
+  width: 30px;
+}
+a.link {
+  text-decoration: none;
+}
+a.link:link {
+  color: blue;
+}
+a.link:visited {
+  color: blue;
+}
+a.link:hover {
+  color: red;
+}
+table {
+  width: 95%;
+  margin: auto;
+  border-collapse: collapse;
+}
+tr.tbh {
+  background-color: white;
+  height: 30px;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+tr:nth-child(odd) {
+  background-color: white;
+}
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+
+body {
+  background-image: url("../background.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+
 }
