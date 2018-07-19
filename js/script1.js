@@ -1,4 +1,5 @@
-
+var url = window.location.href;
+var host = window.location.host;
 $(document).ready(()=> {
   const links = new Array(7);
   var heading = $("table").first();
@@ -47,9 +48,12 @@ $(document).ready(()=> {
   "BHrd":"Total bonus","BPts":"Points for bonus","P/B":"avg score for bonus"}
   var sorting = []
   var sValues = []
+  var pos = 0
+  var current = -1
   $('table').each(function (index) {
     sorting.push([]);
-    $(this).find('tr').first().children().each(function() {
+    pos = index;
+    $(this).find('tr').first().children().each(function(index) {
       //console.log(index);
       $(this).attr("class","tooltip");
       let text = $(this).find("b").html()
@@ -57,26 +61,54 @@ $(document).ready(()=> {
         node = $('<span class="tooltiptext">' + obj[text] + '</span>');
         $(this).find("b").first().after(node)
       }
-      else {
-        console.log("NOPE");
-      }
-      $(this).click(function() {
+      $(this).click(() => {
+        if(url.indexOf('http://' + host + '/teamdetail') != -1) {
+          return;
+        }
+        current = current == -1 ? 1 : -1;
+        var comparison = {};
+        for (let i = 0; i < sValues.length;i++) {
+          comparison[i]=sValues[i][index-1]
+        }
+        var sorted = Object.keys(comparison).sort(function(a,b){
+          if (comparison[a] == comparison[b]) {
+            return a < b ? 1 : -1;
+          }
+          return comparison[a]-comparison[b];
+        })
 
+        $(this).closest("table").find('tr').first().nextAll().each(function () {
+          $(this).remove();
+        })
+
+        if (current == 1) {
+          for (i = 0; i < sValues.length; i++) {
+            $(this).closest("table").find('tr').first().after(sorting[pos][sorted[i]]);
+          }
+        }
+        else {
+          for (i = sValues.length - 1; i >= 0; i--) {
+          $(this).closest("table").find('tr').first().after(sorting[pos][sorted[i]]);
+          }
+        }
       })
     })
 
     $(this).find('tr').first().nextAll().each(function () {
-        sorting[index].push($(this));
+        sorting[pos].push($(this).clone());
         //console.log ($(this).html());
         var entries=[]
         $(this).children().each(function() {
-          if ($(this).has("a").length !=0) {
-            continue;
+          if ($(this).has("a").length==0) {
+            entries.push($(this).html());
           }
-          entries.push($(this).html());
         })
         sValues.push(entries);
         //console.log(entries);
     })
   })
+  var endq = $("<div class='title'>Click on the tags to sort</div>");
+  var endq2 = $("<div class='title'>Made by Daniel Hahn, Aditya Paul, and Ryan Chhong</div>");
+  $("body").children().last().after(endq);
+  $("body").children().last().after(endq2);
 })
