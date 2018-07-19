@@ -5,14 +5,16 @@ const app = express();
 const path = require('path');
 const fs = require('fs');
 
-app.use(express.static("js"));
-app.use(express.static("pictures"));
-app.use(express.static("CSS"));
+app.use(express.static("js", redirect = false));
+app.use(express.static("pictures", redirect = false));
+app.use(express.static("CSS", redirect = false));
 //for async initializing process
 var direct = {}
 var url = null
+
 async.series([
   function getCommands(step) {
+
     fs.readdir("static", (err, files) => {
       if (err) {console.log ("wut")};
       for (let i = 1; i < files.length; i++ ){
@@ -28,15 +30,15 @@ async.series([
     if( err ) {
       console.log('Error: '+err);
 }})
-
 app.all('/*', (req, res) => {
   url = req.url.split('/')[1];
   console.log (url);
+
   if (url in direct) {
     res.sendFile(path.join(__dirname + direct[url]));
   }
   else {
-    res.sendFile(path.join(__dirname + '/static/redirect.html'));
+    res.sendFile(path.join(__dirname +'/static/redirect.html'));
   }
 })
 
