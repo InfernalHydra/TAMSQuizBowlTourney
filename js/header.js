@@ -51,6 +51,7 @@ $(document).ready(()=> {
   var pos = 0
   var current = -1
   $('table').each(function (index) {
+    $(this).attr("class", "highlight");
     sorting.push([]);
     pos = index;
     $(this).find('tr').first().children().each(function(index) {
@@ -94,7 +95,8 @@ $(document).ready(()=> {
       })
     })
 
-    $(this).find('tr').first().nextAll().each(function () {
+    $(this).find('tr').first().nextAll().each(function (index) {
+
         sorting[pos].push($(this).clone());
         //console.log ($(this).html());
         var entries=[]

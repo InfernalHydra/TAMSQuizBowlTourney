@@ -6,6 +6,11 @@
 .find {
   display: flex;
   flex-wrap: nowrap;
+  position: sticky;
+  top: 60px;
+  background-color: white;
+  opacity: 0.8;
+
 }
 .find > a {
   transition: background-color 0.5s ease;
@@ -27,14 +32,18 @@
   text-decoration: none;
 }
 .container {
-  position:sticky !important;
+  position: sticky !important;
+  top: 0;
   height: 20px;
   padding: 20px;
   background-color: grey;
-
+  box-sizing:content-box !important;
 }
 .text {
   position: relative !important;
+  margin:auto;
+  width: 30%;
+  top: -20px;
   text-align: center !important;
 }
 .rotate {
