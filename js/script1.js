@@ -45,8 +45,12 @@ $(document).ready(()=> {
   "15":"Power","10": "Toss-Up","-5":"Neg","TUH":"Total number of toss-ups heard",
   "PPTH":"avg score per toss","P/N":"power to neg ratio","G/N":"get to neg ratio",
   "BHrd":"Total bonus","BPts":"Points for bonus","P/B":"avg score for bonus"}
-  $('table').each(function () {
+  var sorting = []
+  var sValues = []
+  $('table').each(function (index) {
+    sorting.push([]);
     $(this).find('tr').first().children().each(function() {
+      //console.log(index);
       $(this).attr("class","tooltip");
       let text = $(this).find("b").html()
       if (text in obj) {
@@ -56,6 +60,23 @@ $(document).ready(()=> {
       else {
         console.log("NOPE");
       }
+      $(this).click(function() {
+
+      })
     })
 
+    $(this).find('tr').first().nextAll().each(function () {
+        sorting[index].push($(this));
+        //console.log ($(this).html());
+        var entries=[]
+        $(this).children().each(function() {
+          if ($(this).has("a").length !=0) {
+            continue;
+          }
+          entries.push($(this).html());
+        })
+        sValues.push(entries);
+        //console.log(entries);
+    })
+  })
 })
