@@ -134,10 +134,9 @@ tr:nth-child(odd) {
 th, td {
     border-bottom: 1px solid #ddd;
 }
-
-div.ending {
-  background-image: url("../background.jpg");
-  background-repeat: no-repeat;
-  background-size: contain;
-
+img.ending {
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
 }

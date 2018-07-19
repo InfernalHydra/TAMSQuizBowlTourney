@@ -150,8 +150,9 @@ $(document).ready(()=> {
     endq = $("<div class='title'>Click on the tags to sort</div>");
   }
   var endq2 = $("<div class='title'>Made by Daniel Hahn, Aditya Paul, and Ryan Chhong</div>");
-  var endpic = $("div")
+  var endpic = $("<img class='ending'src='background.jpg'></img>");
   $("body").children().last().after(endq);
   $("body").children().last().after(endq2);
+  $("body").children().last().after(endpic);
 
 })
