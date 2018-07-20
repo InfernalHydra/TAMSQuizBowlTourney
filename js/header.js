@@ -83,10 +83,12 @@ $(document).ready(()=> {
         }
 
         for (let i = 0; i < sValues.length - hasb;i++) {
-          if (sValues[i][index] == "inf") {
+          if (sValues[i][index].indexOf("inf")!=-1) {
             comparison[i] = 1000000;
           }
-          comparison[i]=sValues[i][index]
+          else {
+            comparison[i]=Math.abs(sValues[i][index]);
+          }
         }
         var sorted = Object.keys(comparison).sort(function(a,b){
 
